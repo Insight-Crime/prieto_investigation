@@ -5,6 +5,8 @@ library(ggtext)
 
 police <- read_xlsx("data/cleaned_data.xlsx")
 
+theme_set(theme_ic())
+
 # Line chart date -------------------------------------------------------------
 line_chart_date <- ggplot() +
   geom_line(data = police,
@@ -239,8 +241,8 @@ bar_chart_year <- ggplot() +
             mapping = aes(x = year, y = denuncias,
                           fill = group), position = "dodge") +
   geom_text(data = police,
-            mapping = aes(x = 2019.25, #31/03/2019
-                          y = 10,
+            mapping = aes(x = 2017.5, #31/03/2019
+                          y = 30,
                           label = "Prieto governor\nof Zulia"),
             family = "Roboto",
             hjust = 0) +
@@ -258,7 +260,7 @@ bar_chart_year <- ggplot() +
             hjust = .85, label.size = NA) +
   geom_text(data = police,
             mapping = aes(x = 2005, #01/10/2006
-                          y = 53,
+                          y = 83,
                           label = "Reported Police Abuse During the Prieto Administrations"),
             family = "Roboto Black", size = 6,
             hjust = 0, color = "#3B3B3B") +
@@ -270,7 +272,7 @@ bar_chart_year <- ggplot() +
        #     hjust = 0.05, color = "#3B3B3B") +
   geom_text(data = police,
             mapping = aes(x = 2005, #01/10/2006
-                          y = 42,
+                          y = 70,
                           label = "Security forces under Prieto’s control were notorious for abusing their power,\nattacking journalists, protestors, and his personal rivals."),
             family = "Roboto", size = 4,
             hjust = 0, color = "#3B3B3B") +
@@ -299,13 +301,14 @@ bar_chart_year <- ggplot() +
                                "CPBEZ" = "Zulia State Police")) +
   xlab("") +
   ylab("Reported Cases of Abuse") +
-  theme(legend.position = c(.0, .2),
+  theme(legend.position = c(.0, .35),
         legend.direction = "horizontal",
         axis.title.y = element_text(vjust = 0, hjust = 0, angle = 90,
                                     margin = margin(r = 10)),
         plot.title = element_markdown(),
         axis.ticks.x = element_line(),
-        axis.line.x = element_line(color = "#3B3B3B", linewidth = 1)) +
+        axis.line.x = element_line(color = "#3B3B3B", linewidth = 1),
+        axis.text.x = element_text(size = 12)) +
   geom_segment(aes(x = 2019, xend = 2020.5, y = 147.7, yend = 147.7),
                color = "#C53630",  linetype = 1) 
 bar_chart_year
@@ -314,6 +317,3 @@ finalise_plot(bar_chart_year,
               "     Source: PROVEA Annual Reports\n",
               "figures/line_test")
 
-
-
-258G258
