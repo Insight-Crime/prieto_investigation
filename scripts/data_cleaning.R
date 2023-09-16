@@ -29,3 +29,9 @@ police_export$denuncias <- ifelse(is.na(police_export$denuncias), 0,
 
 write_excel_csv(police_export, "data/cleaned_data.csv")
 # additional cases added manually
+
+d3_data <- read_xlsx("data/cleaned_data.xlsx") %>%
+  select(year, group, denuncias) %>%
+  pivot_wider(names_from = group, values_from = denuncias)
+
+write_csv(d3_data, "data/d3_data.csv")
