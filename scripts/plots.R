@@ -241,11 +241,11 @@ bar_chart_year <- ggplot() +
             mapping = aes(x = year, y = denuncias,
                           fill = group), position = "dodge") +
   geom_text(data = police,
-            mapping = aes(x = 2017.5, #31/03/2019
+            mapping = aes(x = 2019.25, #31/03/2019
                           y = 30,
                           label = "Prieto governor\nof Zulia"),
             family = "Roboto",
-            hjust = 0) +
+            hjust = 1) +
   geom_text(data = police,
             mapping = aes(x = 2011.25, #"31/03/2011"
                           y = 10,
@@ -313,7 +313,31 @@ bar_chart_year <- ggplot() +
                color = "#C53630",  linetype = 1) 
 bar_chart_year
 
+png("test.png",
+    width = 981 * 4,
+    height = 811 * 4,
+    res = 300)
 finalise_plot(bar_chart_year,
               "     Source: PROVEA Annual Reports\n",
-              "figures/line_test")
+              "figures/line_test.png")
+dev.off()
 
+png("test.png",
+    width = 981 * 8,
+    height = 811 * 8,
+    res = 700)
+finalise_plot(bar_chart_year,
+              "     Source: PROVEA Annual Reports\n",
+              "figures/line_test.png")
+dev.off()
+
+library(svglite)
+svg("test.svg",
+    width = 981 * 4,
+    height = 811 * 4)
+
+finalise_plot(bar_chart_year,
+              "     Source: PROVEA Annual Reports\n",
+              "figures/line_test.png")
+dev.off()
+ggsave("test.svg", width = 981 / 72, height=811 / 72, units = "in")
