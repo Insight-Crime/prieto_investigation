@@ -12,7 +12,6 @@ const svg = d3.select("#prieto_bar_chart")
 
 // Parse the Data
 d3.csv("https://raw.githubusercontent.com/newton-c/prieto_investigation/main/data/d3_data.csv").then( function(data) {
-//d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv").then( function(data) {
 
     // List of subgroups = header of the csv files = soil condition here
     const subgroups = data.columns.slice(1)
