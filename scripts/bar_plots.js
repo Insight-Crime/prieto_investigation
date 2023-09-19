@@ -21,20 +21,21 @@ d3.csv("https://raw.githubusercontent.com/newton-c/prieto_investigation/main/dat
 
     console.log(groups)
 
-    // Add X axis
-    const x = d3.scaleBand()
-        .domain(groups)
-        .range([0, width])
-        .padding([0.2])
-    svg.append("g")
+// Add X axis
+const x = d3.scaleBand()
+    .domain(groups)
+    .range([0, width])
+    .padding([0.2])
+
+svg.append("g")
     .attr("class", "x-axis")
     .attr("transform", `translate(0, ${height})`)
     .call(d3.axisBottom(x)
     .tickSizeInner(3)
     .tickSizeOuter(0))
 
-    // Add Y axis
-    const y = d3.scaleLinear()
+// Add Y axis
+const y = d3.scaleLinear()
     .domain([0, 160])
     .range([ height, 0 ]);
     svg.append("g")
@@ -44,19 +45,19 @@ d3.csv("https://raw.githubusercontent.com/newton-c/prieto_investigation/main/dat
     .tickSizeOuter(0)
     .tickValues([5, 10, 15, 20, 140, 145, 150]))
 
-    // Another scale for subgroup position?
-    const xSubgroup = d3.scaleBand()
+// Another scale for subgroup position?
+const xSubgroup = d3.scaleBand()
     .domain(subgroups)
     .range([0, x.bandwidth()])
     .padding([0.05])
 
-    // color palette = one color per subgroup
-    const color = d3.scaleOrdinal()
+// color palette = one color per subgroup
+const color = d3.scaleOrdinal()
     .domain(subgroups)
     .range(['#374F98', '#C53630'])
 
-    // Show the bars
-    svg.append("g")
+// Show the bars
+svg.append("g")
     .selectAll("g")
     // Enter in data = loop group per group
     .data(data)
@@ -159,14 +160,14 @@ svg.append("text") // Prieto governor annotation ln 2
 svg.append("text") // Prieto mayor annotation ln 1
     .attr('class', 'annotations')    
     .attr("x", 210)
-    .attr("y", 598)
+    .attr("y", 525)
     .text("Prieto mayor")
     .attr("text-anchor", "start")
 
 svg.append("text") // Prieto mayor annotation ln 2
     .attr('class', 'annotations')    
     .attr("x", 210)
-    .attr("y", 613)
+    .attr("y", 540)
     .text("of San Francisco")
     .attr("text-anchor", "start")
 
@@ -187,8 +188,8 @@ svg.append("rect")
 
 svg.append("rect")
     .attr("class", "plot-legend-rect")
-    .attr("x", 300)
-    .attr("y", 440)
+    .attr("x", 10)
+    .attr("y", 470)
     .attr("fill", '#C53630')
 
 svg.append("text")
@@ -201,8 +202,8 @@ svg.append("text")
 
 svg.append("text")
     .attr("class", "plot-legend-text")
-    .attr("x", 300)
-    .attr("y", 440)
+    .attr("x", 10)
+    .attr("y", 470)
     .attr("dx", 30)
     .attr("dy", 15)
     .text("Zulia State Police")
